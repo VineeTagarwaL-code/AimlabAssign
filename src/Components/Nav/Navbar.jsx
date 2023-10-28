@@ -18,6 +18,11 @@ const Navbar1 = styled.div`
   padding-inline:20px;
  width:100vw;
    justify-content: flex-end;
+
+   @media(max-width:576px){
+    padding-top:5px;
+    padding-inline:5px;
+}
 `;
 
 
@@ -45,6 +50,15 @@ color: white !important;
 border: none;
 border-radius: 4px;
 background-color:rgb(34, 158, 246);
+
+
+@media(max-width:576px){
+  width:60px;
+  font-size:12px;
+  margin-right:10px;
+}
+
+
 `
 function Navbar() {
   const notifySignup = () => toast.success("Signup Coming soon !");

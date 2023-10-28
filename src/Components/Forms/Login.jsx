@@ -6,13 +6,20 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const FormWrapper = styled.div`
   display: flex;
-  margin-top:30px;
  
+  margin-top:30px;
+  @media (min-width: 576px) and (max-width: 767px){
+  justify-content:center;
+  }
 `;
 
 const LoginForm = styled.form`
 
   width: 300px;
+  @media(max-width:576px){
+    width: 100%;
+    padding-right:20px;
+  }
 `;
 
 const FormGroup = styled.div`
@@ -27,6 +34,10 @@ const Label = styled.label`
   font-size:20px;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 10px;
+
+  @media(max-width:576px){
+    font-size:15px;
+  }
 `;
 
 const Input = styled.input`
@@ -36,6 +47,11 @@ const Input = styled.input`
   font-family: 'Open Sans', sans-serif;
   border: 1px solid #ccc;
   border-radius: 6px;
+
+  @media(max-width:576px){
+    padding: 6px;
+    color:black;
+  }
 `;
 
 const PasswordToggle = styled.button`
@@ -113,6 +129,11 @@ margin-top:20px;
 
 const ExtraMessage = styled.p`
   color:white;
+   padding-bottom:2rem;
+  @media(max-width:576px){
+    padding-left: 1.4em;
+    color:white;
+  }
 `;
 const HighLigth = styled.span`
  color:white;
