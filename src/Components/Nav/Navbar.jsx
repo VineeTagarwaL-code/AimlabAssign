@@ -67,7 +67,7 @@ function Navbar() {
   }
   return (
    <Navbar1>
-    <Button>Login</Button>
+    <Button onClick={()=>{location.reload()}}>Login</Button>
     <Button onClick={handleSignup}>Signup</Button>
     <ToastContainer />
    </Navbar1>

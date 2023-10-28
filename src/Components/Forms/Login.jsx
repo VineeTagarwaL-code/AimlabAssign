@@ -135,9 +135,10 @@ const ExtraMessage = styled.p`
     color:white;
   }
 `;
-const HighLigth = styled.span`
+const HighLight = styled.span`
  color:white;
  font-weight:bold;
+ cursor:pointer;
  text-decoration:underline;
 `
 
@@ -319,7 +320,7 @@ function Login() {
         </ButtonContainer>
 
         <MessageContainer>
-          <ExtraMessage>Dont have an account ? <HighLigth>Register Here</HighLigth></ExtraMessage>
+          <ExtraMessage>Dont have an account ? <HighLight onClick={()=>{notifyMessage("Coming soon !")}}>Register Here</HighLight></ExtraMessage>
         </MessageContainer>
       </LoginForm>
 
