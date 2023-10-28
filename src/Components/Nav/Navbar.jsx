@@ -2,6 +2,11 @@ import React from 'react'
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const Navbar1 = styled.div`
   position: absolute;
   z-index: 1999;
@@ -42,10 +47,15 @@ border-radius: 4px;
 background-color:rgb(34, 158, 246);
 `
 function Navbar() {
+  const notifySignup = () => toast.success("Signup Coming soon !");
+  function handleSignup(){
+    notifySignup()
+  }
   return (
    <Navbar1>
     <Button>Login</Button>
-    <Button>Signup</Button>
+    <Button onClick={handleSignup}>Signup</Button>
+    <ToastContainer />
    </Navbar1>
   )
 }

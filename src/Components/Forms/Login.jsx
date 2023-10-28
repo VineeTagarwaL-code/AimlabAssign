@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faRightToBracket , faCircleExclamation} from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const FormWrapper = styled.div`
   display: flex;
   margin-top:30px;
@@ -117,10 +120,108 @@ const HighLigth = styled.span`
  text-decoration:underline;
 `
 
+const Error = styled.p`
+color:white;
+
+font-weight:bold;
+margin-left:5px;
+font-size:12px;
+font-family: 'Open Sans', sans-serif;
+`
+
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+
+  const [loginId , setLoginId] = useState("")
+  const [pass , setPass] = useState("")
+
+  const [validLoginId , setValidLoginId] = useState(true)
+  const [validPass , setValidPass] = useState(true)
+
+  const handlePasswordChange = (e) => {
+    const newPass = e.target.value;
+    setPass(newPass);
+
+    const valid = isPasswordValid(newPass);
+    setValidPass(valid);
+
+  }
+
+  const handleLoginIdChange = (e) => {
+    const newID = e.target.value;
+    setLoginId(newID);
+
+    const valid = isLoginID(newID);
+    setValidLoginId(valid);
+
+  }
+  function notifyLoginSuccessR(){
+    toast.success("login Successfull , credentials stored !")
+  }
+  function notifyLoginSuccess(){
+    toast.success("login Successfull !")
+  }
+
+  function notifyValidationFailed(){
+    toast.error("Validation Failed")
+  }
+  function notifyMessage(msg){
+    toast(msg)
+  }
+
+  function notifyError(msg){
+    toast.error(msg)
+  }
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log("clicked")
+       if(!agreeToTerms){
+        notifyMessage("Please agree to terms/conditon to continue...")
+        return;
+       }
+       if( loginId === "" && pass ==="" ){
+        notifyError("Empty values")
+        return;
+       }
+
+      if(validPass && validLoginId && agreeToTerms){
+        if(rememberMe){
+          localStorage.setItem("loginId" , loginId);
+          notifyLoginSuccessR()
+          return;
+        }else{
+          notifyLoginSuccess()
+          reutrn;
+        }
+        
+
+      }else{
+        notifyValidationFailed()
+      }
+  }
+  function isPasswordValid(password) {
+    if (password.length === 0) {
+      return false;
+    } else if (password.length > 20) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function isLoginID(password) {
+    if (password.length === 0) {
+      return false;
+    } else if (password.length < 7) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
 
   const togglePasswordVisibility = (e) => {
     e.preventDefault();
@@ -141,19 +242,32 @@ function Login() {
 
         <FormGroup>
           <Label>Login ID</Label>
-          <Input type="email" placeholder="Enter Login ID" />
+          <Input type="text"
+           placeholder="Enter Login ID"
+           value={loginId}
+           onChange ={(e)=>{handleLoginIdChange(e)}}
+            />
+            {
+              !validLoginId  && <Error><FontAwesomeIcon icon={faCircleExclamation} style={{color: "#ffffff", paddingRight:"5px"}} />Enter a valid LoginID ( 7 char ) </Error>
+            }
         </FormGroup>
         <FormGroup>
           <Label>Password</Label>
           <Input
             type={showPassword ? 'text' : 'password'}
             placeholder="Enter Password"
+            value={pass}
+            onChange ={(e)=>{handlePasswordChange(e)}}
           />
+              {
+              !validPass  && <Error><FontAwesomeIcon icon={faCircleExclamation} style={{color: "#ffffff", paddingRight:"5px"}} />Max 20 char allowed </Error>
+            }
           <PassCont>
           <PasswordToggle onClick={(e)=>{togglePasswordVisibility(e)}}>
             {showPassword ? 'Hide' : 'Show'}
           </PasswordToggle>
-          <PasswordToggle onClick={(e)=>{togglePasswordVisibility(e)}}>
+          <PasswordToggle onClick={(e)=>{ e.preventDefault() 
+            notifyMessage("coming soon !")}}>
             Change Password
           </PasswordToggle>
           </PassCont>
@@ -180,7 +294,7 @@ function Login() {
           </RememberMeLabel>
         </FormGroup>
         <ButtonContainer>
-          <Button>Login</Button>
+          <Button onClick={(e)=>{handleSubmit(e)}}>Login</Button>
         </ButtonContainer>
 
         <MessageContainer>
@@ -188,7 +302,7 @@ function Login() {
         </MessageContainer>
       </LoginForm>
 
-     
+
     </FormWrapper>
   );
 }
