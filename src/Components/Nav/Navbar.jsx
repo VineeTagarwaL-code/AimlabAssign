@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar1 = styled.div`
   position: absolute;
-  z-index: 1999;
+ 
   top: 0;
   background: transparent;
   display: flex;

@@ -31,7 +31,14 @@ const Wrapper = styled.section`
     flex-direction:column-reverse;
   }
 
-  @media (min-width: 768px) and (max-width: 991px){
+  @media (min-width: 576px) and (max-width: 767px)and (orientation: landscape){
+    flex-direction:column-reverse;
+    overflow-y:scroll;
+  }
+
+
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+
 
   }
 `;
@@ -58,11 +65,20 @@ const FormContainer = styled.div`
    
     padding-top:20px;
   }
+  @media (min-width: 576px) and (max-width: 767px)and (orientation: landscape){
+    height:fit-content;
+  }
   @media (min-width: 768px) and (max-width: 991px){
     padding-left: 1.4rem;
   }
   @media (min-width: 992px) and (max-width: 1199px){
     padding-left: 1.6rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    overflow:scroll !important;
+    padding-top:1rem;
+     height:100%;
   }
 
 `;
@@ -140,6 +156,12 @@ const MessageH = styled.h2`
   @media (min-width: 992px) and (max-width: 1199px){
     font-size:2.5rem;
   }
+
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    font-size:1rem;
+
+  }
+
   
   
 `
@@ -153,13 +175,21 @@ const SubMessage = styled.h4`
   font-size:18px;
 }
 
+@media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+  font-size:12px;
+
+}
+
 `
 const InnerContent = styled.div`
  display:flex;
  align-items:center;
   gap:20px;
   margin-bottom:20px;
-
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+     margin-bottom:0px;
+  
+  }
  `
 
  const Image1 = styled.img`
@@ -185,6 +215,10 @@ margin-top:5px;
   }
   @media (min-width: 992px) and (max-width: 1199px){
 
+  }
+
+  @media (min-width: 576px) and (max-width: 767px)and (orientation: landscape){
+    height:200px;
   }
  `
 function LoginPage() {

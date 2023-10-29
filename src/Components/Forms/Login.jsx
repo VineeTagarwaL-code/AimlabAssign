@@ -11,6 +11,11 @@ const FormWrapper = styled.div`
   @media (min-width: 576px) and (max-width: 767px){
   justify-content:center;
   }
+
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    margin-top:0px ;
+
+  }
 `;
 
 const LoginForm = styled.form`
@@ -24,7 +29,10 @@ const LoginForm = styled.form`
 
 const FormGroup = styled.div`
   margin: 10px 0;
- 
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    margin: 5px 0;
+
+  }
 `;
 
 const Label = styled.label`
@@ -37,6 +45,10 @@ const Label = styled.label`
 
   @media(max-width:576px){
     font-size:15px;
+  }
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    font-size:15px;  margin-bottom: 5px;
+
   }
 `;
 
@@ -51,6 +63,11 @@ const Input = styled.input`
   @media(max-width:576px){
     padding: 6px;
     color:black;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    padding: 4px;
+
   }
 `;
 
@@ -71,6 +88,10 @@ const RememberMeLabel = styled.label`
   font-family: 'Open Sans', sans-serif;
   font-size:16px;
   align-items: center;
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    font-size: 12px;
+
+  }
 `;
 
 const Checkbox = styled.input`
@@ -97,6 +118,11 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    margin-top: 10px;
+
+  }
+  
 `;
 
 const Button = styled.button`
@@ -109,6 +135,11 @@ const Button = styled.button`
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    padding: 2px 10px;
+
+  }
+
 `;
 
 const PassCont = styled.div`
@@ -124,7 +155,7 @@ const MessageContainer = styled.div`
 width:fit-content;
 display:flex;
 justify-content:center;
-margin-top:20px;
+margin-top:10px;
 `
 
 const ExtraMessage = styled.p`
@@ -134,6 +165,12 @@ const ExtraMessage = styled.p`
     padding-left: 1.4em;
     color:white;
   }
+  @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape){
+    margin-left:20px;
+    font-size:14px;
+ 
+   }
+ 
 `;
 const HighLight = styled.span`
  color:white;
